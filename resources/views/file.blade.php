@@ -9,29 +9,33 @@
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <link href="/css/cover.css" rel="stylesheet">
     </head>
-    <body class="text-center">
+    <body class="text-center" style="box-shadow: none;">
 
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" style="min-width: 800px !important;">
+      <header class="masthead mb-auto" style="margin-bottom: 0px !important;">
         <div class="inner">
           <nav class="nav nav-masthead justify-content-center">
-            <!-- <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="#">Features</a>
-            <a class="nav-link" href="#">Contact</a> -->
+            <a class="nav-link" href="/">Home</a>
           </nav>
         </div>
       </header>
 
-      <main role="main" class="inner cover">
-        <h1 class="cover-heading">ads.txt</h1>
-        <p class="lead">This tool will validate your ads.txt file! Enter the URL to your file and let's get started!</p>
-        <p class="lead">
+      <main role="main" class="inner cover" style="text-align: left;">
+        @if(!empty($entry))
+        <h1 style="text-align: center;">Validator Results</h1>
+        <h3>URL: {{$entry->url}}</h3>
+        <h3>Slug: {{$entry->slug}}</h3>
+        <h3>Status: {{$entry->status}}</h3>
+        <h3>Contents:</h3>
+        <pre><code>{{$entry->contents}}</code></pre>
             <form method="post" action="/files">
                 @csrf
-                <input class="form-control" type="url" name="url" placeholder="http://localhost/ads.txt" required="required">
-                <input type="submit" class="btn btn-lg btn-primary"/>
+                <input class="form-control" type="hidden" name="url" value="" required="required">
+                <input type="submit" class="btn btn-lg btn-primary" value="Re-Run Validation"/>
             </form>
-        </p>
+        @else
+        Invalid URL
+        @endif
       </main>
 
       <footer class="mastfoot mt-auto">

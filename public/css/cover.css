@@ -104,3 +104,12 @@ body {
 .mastfoot {
   color: rgba(255, 255, 255, .5);
 }
+
+pre {
+  background: #fff;
+  padding: 4px;
+  border-radius: 4px;
+}
+code {
+  text-shadow: none;
+}

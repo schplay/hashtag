@@ -19,6 +19,7 @@ class CreateFilesTable extends Migration
             $table->string('slug');
             $table->longText('contents');
             $table->string('status');
+            $table->text('errors')->nullable();
             $table->timestamps();
         });
     }

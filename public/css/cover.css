@@ -113,3 +113,7 @@ pre {
 code {
   text-shadow: none;
 }
+
+h3 {
+  text-transform: none;
+}

@@ -26,11 +26,17 @@
         <h3>URL: {{$entry->url}}</h3>
         <h3>Slug: {{$entry->slug}}</h3>
         <h3>Status: {{$entry->status}}</h3>
+        @if(!empty($entry->errors))
+        <h3>Errors:</h3>
+        <pre><code>@foreach(unserialize($entry->errors) as $error){{$error}}
+@endforeach
+        </code></pre>
+        @endif
         <h3>Contents:</h3>
         <pre><code>{{$entry->contents}}</code></pre>
             <form method="post" action="/files">
                 @csrf
-                <input class="form-control" type="hidden" name="url" value="" required="required">
+                <input class="form-control" type="hidden" name="url" value="{{$entry->url}}" required="required">
                 <input type="submit" class="btn btn-lg btn-primary" value="Re-Run Validation"/>
             </form>
         @else

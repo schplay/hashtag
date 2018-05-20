@@ -42,7 +42,7 @@ class FileController extends Controller
         $file->slug = md5($file->url . "asd0f9834");
         $contents = file_get_contents($file->url);
         $file->contents = $contents;
-        $file->status = 0;
+        $file->status = 'success';
         $file->save();
         return redirect('/files/'.$file->slug);
     }

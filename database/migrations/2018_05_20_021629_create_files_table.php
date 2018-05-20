@@ -18,7 +18,7 @@ class CreateFilesTable extends Migration
             $table->string('url');
             $table->string('slug');
             $table->longText('contents');
-            $table->integer('status');
+            $table->string('status');
             $table->timestamps();
         });
     }

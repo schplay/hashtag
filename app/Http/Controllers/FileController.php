@@ -80,8 +80,10 @@ class FileController extends Controller
                     if(substr($line[0], 0, 1) != '#') {
                         // The first 3 fields are required
                         if(count($line) < 3) {
-                            $status = 'error';
-                            $errors[] = $line[0].' - missing a required field';
+                            if(!strpos($line[0], '=')) {
+                                $status = 'error';
+                                $errors[] = $line[0].' - missing a required field';
+                            }
                         } else {
                             // Only 'direct' and 'reseller' are currently valid values for field 3
                             // This should be case insensitived
